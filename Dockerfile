@@ -7,7 +7,7 @@ WORKDIR /app
 ARG ARCH_VALUE
 ENV DOCKER_ARCH=$ARCH_VALUE
 RUN apk add gettext ca-certificates openssl \
-    && wget https://storage.googleapis.com/kubernetes-release/release/$(wget https://storage.googleapis.com/kubernetes-release/release/stable.txt -q -O -)/bin/linux/{$DOCKER_ARCH}/kubectl -q -O /usr/local/bin/kubectl 
+    && wget https://storage.googleapis.com/kubernetes-release/release/$(wget https://storage.googleapis.com/kubernetes-release/release/stable.txt -q -O -)/bin/linux/${DOCKER_ARCH}/kubectl -q -O /usr/local/bin/kubectl 
 FROM alpine:latest
 RUN apk add --no-cache curl
 COPY --from=builder /app/Watch /
